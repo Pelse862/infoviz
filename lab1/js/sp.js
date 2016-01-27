@@ -40,7 +40,10 @@ function sp(){
         
         //define the domain of the scatter plot axes
         //...
-        x.domain([0, d3.max(data, function(d) { return d["Employment rate"]; })]);  
+        x.domain([0, d3.max(data, function(d)
+        { 
+            return d["Personal"]; 
+         })]);  
         y.domain([0, d3.max(data, function(d) { return d["Household income"]; })]);
         
         draw();
@@ -77,7 +80,7 @@ function sp(){
             .attr("class", "dot")
             //Define the x and y coordinate data values for the dots
             .attr("cx", function(d) {
-                return x(d["Employment rate"]); //Load data
+                return x(d["Personal"]); //Load data
             })
             .attr("cy", function(d) {
                 return y(d["Household income"]); //Load data
