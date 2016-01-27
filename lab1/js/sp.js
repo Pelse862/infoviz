@@ -40,6 +40,15 @@ function sp(){
         
         //define the domain of the scatter plot axes
         //...
+        var xScale = d3.scale.linear().domain([0, d3.max(data_scatter, function(d) {
+            return d[0];  // get the input domain as first column of array
+        })]).range([padding, canvas_width - padding * 2])  // set the output range
+        .nice();  // Make decimals round up nicely
+
+        var yScale = d3.scale.linear().domain([0, d3.max(data_scatter, function(d) {
+            return d[1];  // gets the input domain as the second column of array
+        })]).range([canvas_height - padding, padding])  // set the output range
+        .nice();  // Make decimals round up nicely
         
         draw();
 
