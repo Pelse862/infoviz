@@ -65,7 +65,7 @@ function sp(){
             .append("text")
             .attr("class", "label")
             .attr("x", width)
-            .attr("y", -6);
+            .attr("y", -6)
                 .text("Personal earnings");
         // Add y axis and title.
         svg.append("g")
@@ -75,7 +75,7 @@ function sp(){
             .attr("class", "label")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
-            .attr("dy", ".71em");
+            .attr("dy", ".71em")
                 .text("Self-reported health");
 
         // Add the scatter dots.
