@@ -40,15 +40,8 @@ function sp(){
         
         //define the domain of the scatter plot axes
         //...
-        var xScale = d3.scale.linear()
-                     .domain([0, d3.max(dataset, function(d) { return d[0]; })])
-                     .range([0, w]);
-        .nice();  // Make decimals round up nicely
-
-        var yScale = d3.scale.linear()
-                     .domain([0, d3.max(dataset, function(d) { return d[1]; })])
-                     .range([0, h]);
-        .nice();  // Make decimals round up nicely
+        x.domain([0, d3.max(data, function(d) { return d["Employment rate"]; })]);  
+        y.domain([0, d3.max(data, function(d) { return d["Household income"]; })]);
         
         draw();
 
@@ -83,10 +76,15 @@ function sp(){
             .enter().append("circle")
             .attr("class", "dot")
             //Define the x and y coordinate data values for the dots
-            .attr("cx", self.data[0])
-            .attr("cy", self.data[1])
-            .attr("r", 10)
-            .style("fill", "purple")
+            .attr("cx", function(d) {
+                return x(d["Employment rate"]); //Load data
+            })
+            .attr("cy", function(d) {
+                return y(d["Household income"]); //Load data
+            })
+            .attr("r", 4)
+            .style("fill", function(d) { return color(d["Country"]);})
+       
             //...
             //tooltip
             .on("mousemove", function(d) {
