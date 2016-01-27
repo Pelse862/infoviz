@@ -9,8 +9,9 @@ function sp(){
         height = spDiv.height() - margin.top - margin.bottom;
 
     //initialize color scale
-    //...
-    
+  
+    var color = d3.scale.category10();
+
     //initialize tooltip
     //...
 
@@ -42,7 +43,7 @@ function sp(){
         //...
         x.domain([0, d3.max(data, function(d)
         { 
-            return d["Personal"]; 
+            return d["Personal earnings"]; 
         })]);  
         y.domain([0, d3.max(data, function(d)
         { 
@@ -65,7 +66,7 @@ function sp(){
             .attr("class", "label")
             .attr("x", width)
             .attr("y", -6);
-            
+            .text("Personal earnings")
         // Add y axis and title.
         svg.append("g")
             .attr("class", "y axis")
@@ -75,7 +76,8 @@ function sp(){
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", ".71em");
-            
+            .text("Self-reported health")
+
         // Add the scatter dots.
         svg.selectAll(".dot")
             .data(self.data)
@@ -83,14 +85,14 @@ function sp(){
             .attr("class", "dot")
             //Define the x and y coordinate data values for the dots
             .attr("cx", function(d) {
-                return x(d["Personal"]); //Load data
+                return x(d["Personal earnings"]); //Load data
             })
             .attr("cy", function(d) {
                 return y(d["Self-reported health"]); //Load data
             })
             .attr("r", 4)
             .style("fill", function(d) { return color(d["Country"]);})
-       
+            
             //...
             //tooltip
             .on("mousemove", function(d) {
