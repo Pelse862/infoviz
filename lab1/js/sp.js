@@ -43,8 +43,11 @@ function sp(){
         x.domain([0, d3.max(data, function(d)
         { 
             return d["Personal"]; 
-         })]);  
-        y.domain([0, d3.max(data, function(d) { return d["health"]; })]);
+        })]);  
+        y.domain([0, d3.max(data, function(d)
+        { 
+            return d["Self-reported health"];
+        })]);
         
         draw();
 
@@ -83,7 +86,7 @@ function sp(){
                 return x(d["Personal"]); //Load data
             })
             .attr("cy", function(d) {
-                return y(d["health"]); //Load data
+                return y(d["Self-reported health"]); //Load data
             })
             .attr("r", 4)
             .style("fill", function(d) { return color(d["Country"]);})
