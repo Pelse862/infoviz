@@ -86,6 +86,7 @@ function sp(){
             .attr("cx", self.data[0])
             .attr("cy", self.data[1])
             .attr("r", 10)
+            .style("fill", "purple")
             //...
             //tooltip
             .on("mousemove", function(d) {
