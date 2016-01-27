@@ -83,6 +83,9 @@ function sp(){
             .enter().append("circle")
             .attr("class", "dot")
             //Define the x and y coordinate data values for the dots
+            .attr("cx", self.data[0])
+            .attr("cy", self.data[1])
+            .attr("r", 10)
             //...
             //tooltip
             .on("mousemove", function(d) {
