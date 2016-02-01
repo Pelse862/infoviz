@@ -10,7 +10,7 @@ function sp(){
 
     //initialize color scale
   
-    var color = d3.scale.category10();
+    var color = d3.scale.category20();
 
     //initialize tooltip
     //...

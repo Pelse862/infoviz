@@ -11,7 +11,7 @@ function pc(){
     
     //initialize color scale
     //...
-    
+    var color = d3.scale.category20();
     //initialize tooltip
     //...
 
@@ -52,7 +52,8 @@ function pc(){
             .attr("class", "background")
             .selectAll("path")
             //add the data and append the path 
-            //...
+            .hideAxis(["name"])
+            .color('grey')
             .on("mousemove", function(d){})
             .on("mouseout", function(){});
 
