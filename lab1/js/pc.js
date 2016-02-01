@@ -10,7 +10,6 @@ function pc(){
 
     
     //initialize color scale
-    //...
     var color = d3.scale.category20();
     //initialize tooltip
     //...
@@ -37,13 +36,13 @@ function pc(){
 
         // Extract the list of dimensions and create a scale for each.
         //...
-        x.domain(dimensions = d3.keys(data[0,1,2,3,4]).filter(function(d) {
+        x.domain(dimensions = d3.keys([0,1,2,3,4]).filter(function(d) {
             return [(y[d] = d3.scale.linear()
                 .domain(d3.extent([0,1]))
                 .range([height, 0]))];
         }));
 
-        y.domain(dimensions = d3.keys(data[0,1,2,3,4]).filter(function(d) {
+        y.domain(dimensions = d3.keys([0,1,2,3,4]).filter(function(d) {
             return [(x[d] = d3.scale.linear()
                 .domain(d3.extent([0,1]))
                 .range([width, 0]))];
@@ -126,4 +125,4 @@ function pc(){
         //...
     };
 
-)}
+}
