@@ -61,7 +61,7 @@ function pc(){
         }
         return true;
         draw();
-    }));
+    ));
 
     function draw(){
         // Add grey background lines for context.
