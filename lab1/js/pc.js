@@ -52,8 +52,8 @@ function pc(){
             .attr("class", "background")
             .selectAll("path")
             //add the data and append the path 
-            .hideAxis(["name"])
-            .color('grey')
+            .data(data)
+
             .on("mousemove", function(d){})
             .on("mouseout", function(){});
 
