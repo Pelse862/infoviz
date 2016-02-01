@@ -33,18 +33,35 @@ function pc(){
     //Load data
     d3.csv("data/OECD-better-life-index-hi.csv", function(data) {
 
-        self.data = data;
+        return {
+        // Features that are needed to be visualize
+        label: d.label,
 
-        // Extract the list of dimensions and create a scale for each.
-        //...
-        x.domain(dimensions = d3.keys(data[0,1,2,3,4]).filter(function(d) {
-            return [(y[d] = d3.scale.linear()
-                .domain(d3.extent([0,1]))
-                .range([height, 0]))];
-        }));
-
+        feature1: d.feature1,
+        feature2: d.feature2,
+        feature3: d.feature3,
+        feature4: d.feature4,
+        feature5: d.feature5
+    };
+})
+    .get(function (e, data) {
+    x.domain(
+    dimensions = d3.keys(data[0])
+        .filter(function (d) {
+        if (d == "label") {
+            y[d] = d3.scale.linear()
+                .domain(d3.extent(data, function (p) {
+                return +p[d];
+            }))
+                .range([h, 0]);
+        } else {
+            y[d] = d3.scale.linear()
+                .domain([0, 100])
+                .range([h, 0]);
+        }
+        return true;
         draw();
-    });
+    }));
 
     function draw(){
         // Add grey background lines for context.
