@@ -53,6 +53,8 @@ function pc(){
             .selectAll("path")
             //add the data and append the path 
             .data(data)
+            .enter().append("svg:path")
+            .attr("d", path);
 
             .on("mousemove", function(d){})
             .on("mouseout", function(){});
