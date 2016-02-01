@@ -44,16 +44,17 @@ function pc(){
         feature5: d.feature5
     };
 })
-    .get(function (e, data) {
-    x.domain(
-    dimensions = d3.keys(data[0])
-        .filter(function (d) {
-        if (d == "label") {
-            y[d] = d3.scale.linear()
-                .domain(d3.extent(data, function (p) {
-                return +p[d];
-            }))
-                .range([h, 0]);
+.get(function (e, data) {x.domain(dimensions = d3.keys(data[0]).filter(function (d)
+{
+    if (d == "label") 
+    {
+        y[d] = d3.scale.linear()
+                .domain(d3.extent(data, function (p) 
+                {
+                    return +p[d];
+                }
+                ))
+        .range([h, 0]);
         } else {
             y[d] = d3.scale.linear()
                 .domain([0, 100])
@@ -61,7 +62,7 @@ function pc(){
         }
         return true;
         draw();
-    ));
+    }    
 
     function draw(){
         // Add grey background lines for context.
