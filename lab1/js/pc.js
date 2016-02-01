@@ -43,7 +43,7 @@ function pc(){
                 .range([height, 0]))];
         }));
 
-         y.domain(dimensions = d3.keys(data[0,1,2,3,4]).filter(function(d) {
+        y.domain(dimensions = d3.keys(data[0,1,2,3,4]).filter(function(d) {
             return [(x[d] = d3.scale.linear()
                 .domain(d3.extent([0,1]))
                 .range([width, 0]))];
@@ -126,4 +126,4 @@ function pc(){
         //...
     };
 
-}
+)}
