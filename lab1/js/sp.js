@@ -76,6 +76,7 @@ function sp(){
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", ".71em")
+            .attr("x", -4)
                 .text("Self-reported health");
 
         // Add the scatter dots.
