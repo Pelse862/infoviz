@@ -12,6 +12,7 @@ function map(){
 
     //initialize color scale
     //...
+    var color = d3.scale.category20();
     
     //initialize tooltip
     //...
@@ -31,12 +32,11 @@ function map(){
     g = svg.append("g");
 
     // load data and draw the map
-    d3.json("data/se.topojson", function(error, world) {
+    d3.json("data/world-topo.json", function(error, world) {
         console.log(world);
-        var countries = topojson.feature(world, world.objects.swe_mun).features;
+        var countries = topojson.feature(world, world.objects.countries).features;
         
         //load summary data
-        //...
 
         draw(countries);
         
@@ -47,7 +47,9 @@ function map(){
         var country = g.selectAll(".country").data(countries);
 
         //initialize a color country object	
-        var cc = {};
+        var cc = {
+
+        };
 		
         //...
 
@@ -56,6 +58,8 @@ function map(){
             .attr("d", path)
             .attr("id", function(d) { return d.id; })
             .attr("title", function(d) { return d.properties.name; })
+            .style("fill", function(d){return color(d.properties.name);})
+
             //country color
             //...
             //tooltip

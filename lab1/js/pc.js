@@ -35,18 +35,14 @@ function pc(){
         self.data = data;
 
         // Extract the list of dimensions and create a scale for each.
-        //...
-        x.domain(dimensions = d3.keys([0,1,2,3,4]).filter(function(d) {
-            return [(y[d] = d3.scale.linear()
-                .domain(d3.extent([0,1]))
-                .range([height, 0]))];
+        //var key = _(d3.keys(data[0])).without('Country');
+      x.domain(dimensions = d3.keys(self.data[0]).filter(function(d) {
+            return d != "Country" && (y[d] = d3.scale.linear()
+                .domain(d3.extent(self.data, function(p) {
+                    return +p[d];}))
+                .range([height, 0]));
         }));
 
-        y.domain(dimensions = d3.keys([0,1,2,3,4]).filter(function(d) {
-            return [(x[d] = d3.scale.linear()
-                .domain(d3.extent([0,1]))
-                .range([width, 0]))];
-        }));
 
         draw();
     });
@@ -57,10 +53,10 @@ function pc(){
             .attr("class", "background")
             .selectAll("path")
             //add the data and append the path 
-            .data(data)
-            .enter().append("svg:path")
+            .data(self.data)
+            .enter().append("path")
             .attr("d", path)
-
+            
             .on("mousemove", function(d){})
             .on("mouseout", function(){});
 
@@ -68,8 +64,8 @@ function pc(){
         foreground = svg.append("svg:g")
             .attr("class", "foreground")
             .selectAll("path")
-            .data(data)
-            .enter().append("svg:path")
+            .data(self.data)
+            .enter().append("path")
             .attr("d", path)
             .on("mousemove", function(){})
             .on("mouseout", function(){});
@@ -115,14 +111,30 @@ function pc(){
         });
     }
 
-    //method for selecting the pololyne from other components	
+    // Returns the path for a given data point.
+	function path(d) {
+	  return line(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+	}
+
+	// Handles a brush event, toggling the display of foreground lines.
+	function brush() {
+	  var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
+	      extents = actives.map(function(p) { return y[p].brush.extent(); });
+	  foreground.style("display", function(d) {
+	    return actives.every(function(p, i) {
+	      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+	    }) ? null : "none";
+	  });
+	}
+
+    //method for selecting the pololyne from other components   
     this.selectLine = function(value){
-        //...
+        foreground.style("display", function(d) { return d["Country"] === value ? null : "none";});
     };
     
     //method for selecting features of other components
     function selFeature(value){
-        //...
+        sp1.selectDot(value);
     };
 
 }

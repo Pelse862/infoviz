@@ -64,7 +64,7 @@ function sp(){
             .call(xAxis)
             .append("text")
             .attr("class", "label")
-            .attr("x", width)
+            .attr("x", width-300)
             .attr("y", -6)
                 .text("Personal earnings");
         // Add y axis and title.
@@ -74,9 +74,9 @@ function sp(){
             .append("text")
             .attr("class", "label")
             .attr("transform", "rotate(-90)")
-            .attr("y", 6)
+            .attr("y", 0)
             .attr("dy", ".71em")
-            .attr("x", -4)
+            .attr("x", -300)
                 .text("Self-reported health");
 
         // Add the scatter dots.
