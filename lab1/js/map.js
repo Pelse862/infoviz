@@ -1,5 +1,6 @@
 function map(){
 
+    var self = this;
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, 8])
         .on("zoom", move);
@@ -15,7 +16,9 @@ function map(){
     var color = d3.scale.category20();
     
     //initialize tooltip
-    //...
+    var div = d3.select("body").append("div")   
+    .attr("class", "tooltip")               
+    .style("opacity", 0);
 
     var projection = d3.geo.mercator()
         .center([50, 60 ])
@@ -33,7 +36,7 @@ function map(){
 
     // load data and draw the map
     d3.json("data/world-topo.json", function(error, world) {
-        console.log(world);
+        
         var countries = topojson.feature(world, world.objects.countries).features;
         
         //load summary data
@@ -64,14 +67,24 @@ function map(){
             //...
             //tooltip
             .on("mousemove", function(d) {
-                //...
-            })
+                div.transition()        
+                .duration(200)      
+                .style("opacity", .9);      
+            div .html(d.properties.name+ "<br/>"  + "info")  
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");    
+            })      
+           
             .on("mouseout",  function(d) {
-                //...
+                div.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
             })
             //selection
             .on("click",  function(d) {
-                //...
+                selFeature(d.properties.name);
+                console.log(d.properties.name);
+
             });
 
     }
@@ -90,7 +103,8 @@ function map(){
     
     //method for selecting features of other components
     function selFeature(value){
-        //...
+        pc1.selectLine(value);
+        sp1.selectDot(value);
     }
 }
 

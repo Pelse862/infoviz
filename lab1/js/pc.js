@@ -12,7 +12,9 @@ function pc(){
     //initialize color scale
     var color = d3.scale.category20();
     //initialize tooltip
-    //...
+    var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
 
     var x = d3.scale.ordinal().rangePoints([0, width], 1),
         y = {};
@@ -59,7 +61,7 @@ function pc(){
             
             .on("mousemove", function(d){})
             .on("mouseout", function(){});
-
+           
         // Add blue foreground lines for focus.
         foreground = svg.append("svg:g")
             .attr("class", "foreground")
@@ -67,9 +69,24 @@ function pc(){
             .data(self.data)
             .enter().append("path")
             .attr("d", path)
-            .on("mousemove", function(){})
-            .on("mouseout", function(){});
-
+            .on("mousemove", function(d){
+            	div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html(d["Country"] + "<br/>"  + "something")	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
+            })
+            .on("mouseout", function(d){
+            	      div.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+            })
+            .on("click",  function(d) 
+            {
+                pc1.selectLine(d["Country"]); 
+                selFeature(d["Country"]);  
+            });
         // Add a group element for each dimension.
         var g = svg.selectAll(".dimension")
             .data(dimensions)
@@ -95,10 +112,7 @@ function pc(){
             .attr("width", 16);
     }
 
-    // Returns the path for a given data point.
-    function path(d) {
-        return line(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
-    }
+
 
     // Handles a brush event, toggling the display of foreground lines.
     function brush() {
@@ -116,20 +130,19 @@ function pc(){
 	  return line(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
 	}
 
-	// Handles a brush event, toggling the display of foreground lines.
-	function brush() {
-	  var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
-	      extents = actives.map(function(p) { return y[p].brush.extent(); });
-	  foreground.style("display", function(d) {
-	    return actives.every(function(p, i) {
-	      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-	    }) ? null : "none";
-	  });
-	}
-
     //method for selecting the pololyne from other components   
     this.selectLine = function(value){
-        foreground.style("display", function(d) { return d["Country"] === value ? null : "none";});
+    
+        foreground.select("foreground")
+        .selectAll(".path")
+        .style("stroke-opacity", function(d) { 
+            if(value == d["Country"])
+                return 1;
+            else
+                return 0.15;	
+        }
+        );
+        return value;
     };
     
     //method for selecting features of other components

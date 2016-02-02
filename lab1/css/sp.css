@@ -1,5 +1,5 @@
 /* SVG styling */
-/*path {
+path {
     fill: #CED8B6;
 }
 
@@ -22,7 +22,7 @@ line#bestfit {
 text {
     font-size: 12px;
     fill: #888;
-}*/
+}
 .axis path,
 .axis line {
     fill: none;
@@ -33,4 +33,18 @@ text {
 .dot {
     stroke: #000;
     cursor:pointer;
+}
+
+
+div.tooltip {   
+    position: absolute;         
+    text-align: center;         
+    width: 60px;                    
+    height: 28px;                   
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
 }
