@@ -58,7 +58,11 @@ function sp(){
 
     function draw()
     {
-        
+        var cc = {};
+        self.data.forEach(function(d)
+        {
+            cc[d["Country"]] = color(d["Country"]);
+        });
         // Add x axis and title.
         svg.append("g")
             .attr("class", "x axis")
@@ -102,7 +106,7 @@ function sp(){
                  div.transition()       
                 .duration(200)      
                 .style("opacity", .9);      
-            div .html( d["Country"] + "<br/>"  + "is its namo" )  
+            div .html( d["Country"] + "<br/>"  + "is namo" )  
                 .style("left", (d3.event.pageX) + "px")     
                 .style("top", (d3.event.pageY - 28) + "px");        
             })

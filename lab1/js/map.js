@@ -13,6 +13,7 @@ function map(){
 
     //initialize color scale
     //...
+    
     var color = d3.scale.category20();
     
     //initialize tooltip
@@ -39,10 +40,10 @@ function map(){
         
         var countries = topojson.feature(world, world.objects.countries).features;
         
-        //load summary data
-
-        draw(countries);
-        
+        d3.csv("data/OECD-better-life-index-hi.csv", function(error, data) {
+         
+             draw(countries,data);
+        });
     });
 
     function draw(countries,data)
@@ -53,7 +54,11 @@ function map(){
         var cc = {
 
         };
-		
+
+		data.forEach(function(d)
+        {
+            cc[d["Country"]] = color(d["Country"]);
+        });
         //...
 
         country.enter().insert("path")
@@ -61,10 +66,10 @@ function map(){
             .attr("d", path)
             .attr("id", function(d) { return d.id; })
             .attr("title", function(d) { return d.properties.name; })
-            .style("fill", function(d){return color(d.properties.name);})
+            .style("fill", function(d) { return cc[d.properties.name]; })
 
             //country color
-            //...
+            
             //tooltip
             .on("mousemove", function(d) {
                 div.transition()        

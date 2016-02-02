@@ -50,6 +50,11 @@ function pc(){
     });
 
     function draw(){
+    	var cc = {};
+    	self.data.forEach(function(d)
+    	{
+    		cc[d["Country"]] = color(d["Country"]);
+    	});
         // Add grey background lines for context.
         background = svg.append("svg:g")
             .attr("class", "background")
@@ -69,6 +74,9 @@ function pc(){
             .data(self.data)
             .enter().append("path")
             .attr("d", path)
+            .style( {stroke: function(d){ return (cc[d["Country"]]) }, "stroke-width":"2px"} )
+           
+           
             .on("mousemove", function(d){
             	div.transition()		
                 .duration(200)		
@@ -98,10 +106,12 @@ function pc(){
         g.append("svg:g")
             .attr("class", "axis")
             //add scale
+            .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
             .append("svg:text")
             .attr("text-anchor", "middle")
             .attr("y", -9)
             .text(String);
+
 
         // Add and store a brush for each axis.
         g.append("svg:g")
@@ -133,10 +143,9 @@ function pc(){
     //method for selecting the pololyne from other components   
     this.selectLine = function(value){
     
-        foreground.select("foreground")
-        .selectAll(".path")
+        d3.selectAll("path")
         .style("stroke-opacity", function(d) { 
-            if(value == d["Country"])
+            if(value === d["Country"])
                 return 1;
             else
                 return 0.15;	
