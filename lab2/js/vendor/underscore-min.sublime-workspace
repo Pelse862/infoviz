@@ -1,0 +1,527 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fun",
+				"function"
+			],
+			[
+				"self",
+				"self"
+			],
+			[
+				"select",
+				"selectAll"
+			],
+			[
+				"sur",
+				"surfaceAltitude"
+			],
+			[
+				"my",
+				"myOcclusion"
+			],
+			[
+				"crack",
+				"crackpattern"
+			],
+			[
+				"cra",
+				"crackfreq"
+			],
+			[
+				"s",
+				"size"
+			],
+			[
+				"pcl",
+				"PCLVisualizer"
+			],
+			[
+				"vis",
+				"visualization"
+			],
+			[
+				"norm",
+				"Normal"
+			],
+			[
+				"Nor",
+				"Normal"
+			],
+			[
+				"Normal",
+				"NormalEstimation"
+			],
+			[
+				"Kinec",
+				"KinectManager"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"show",
+				"showMesh"
+			],
+			[
+				"Point",
+				"PointCloud"
+			],
+			[
+				"time",
+				"timeHash"
+			],
+			[
+				"hash",
+				"hashCode"
+			],
+			[
+				"normal_",
+				"normal_x"
+			],
+			[
+				"x",
+				"x"
+			],
+			[
+				"cloud",
+				"cloud_normals"
+			],
+			[
+				"co",
+				"cout"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"main",
+				"Snippet: main()"
+			],
+			[
+				"",
+				"About"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib2,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation') "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/pelle/Desktop/infoviz/infoviz/lab1/css/pc.css",
+		"/home/pelle/Desktop/infoviz/infoviz/lab1/css/map.css",
+		"/home/pelle/Desktop/infoviz/infoviz/lab1/css/sp.css",
+		"/home/pelle/Desktop/infoviz/Fö4",
+		"/home/pelle/Desktop/Tnm084/astroid/astroid_displacement.sl",
+		"/home/pelle/Desktop/Tnm084/astroid/astroid_surface.sl",
+		"/home/pelle/Desktop/Tnm084/astroid/land_surface.sl",
+		"/home/pelle/Desktop/Tnm084/astroid/land_displacement.sl",
+		"/home/pelle/Desktop/Tnm084/astroid/astroid.rib",
+		"/home/pelle/Desktop/Tnm084/planet.sl",
+		"/home/pelle/Desktop/Tnm084/astroid/stars_surface.sl",
+		"/home/pelle/Desktop/Tnm084/craquelure.rib",
+		"/home/pelle/Desktop/Tnm084/planet/planet_surface.sl",
+		"/home/pelle/Desktop/Tnm084/planet/planet_displacement.sl",
+		"/home/pelle/Desktop/Tnm084/planet/planet.rib",
+		"/home/pelle/Desktop/Tnm084/craquelure.sl",
+		"/home/pelle/.cache/.fr-RUPmXd/craquelure.sl",
+		"/home/pelle/Desktop/Tnm084/planet.rib",
+		"/home/pelle/.cache/.fr-zenpOG/voronoi.sl",
+		"/home/pelle/.cache/.fr-xaiRvs/voronoi.sl",
+		"/home/pelle/Desktop/Tnm084/planet.ls",
+		"/home/pelle/Desktop/Network/TNM031/Voteing/certificateCommands",
+		"/home/pelle/Desktop/medusa/Medusa/rapport/rapport.tex",
+		"/home/pelle/Desktop/medusa/Medusa/src/Medusa.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/src/Kinect.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/src/calibration.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/src/KinectManager.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/src/texture.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/src/renderMesh.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/CMakeBuild/file.obj",
+		"/home/pelle/Desktop/medusa/Medusa/src/main.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/include/Kinect.h",
+		"/home/pelle/Desktop/medusa/Medusa/include/texture.h",
+		"/home/pelle/Desktop/medusa/Medusa/include/renderMesh.h",
+		"/home/pelle/Desktop/medusa/Medusa/CMakeBuild/texture(2).cpp",
+		"/home/pelle/Desktop/medusa/Medusa/include/Medusa.h",
+		"/home/pelle/Desktop/medusa/Medusa/src/MD5.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/include/MD5.h",
+		"/home/pelle/Desktop/medusa/Medusa/src/connect.html",
+		"/home/pelle/Desktop/medusa/Medusa/src/websocket.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/include/websocket.h",
+		"/home/pelle/Desktop/medusa/Medusa/CMakeLists.txt",
+		"/home/pelle/Downloads/texture.cpp",
+		"/home/pelle/Desktop/medusa/Medusa/src/syncingImages.m",
+		"/home/pelle/Desktop/medusa/Medusa/CMakeBuild/textured_file.obj",
+		"/home/pelle/Desktop/medusa/Medusa/CMakeBuild/textured_file.mtl",
+		"/home/pelle/Desktop/medusa/Medusa/include/png++/writer.hpp",
+		"/etc/apt/sources.list"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"*.*"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fore",
+			"cc",
+			"(\".",
+			"cc",
+			"country",
+			"data",
+			"log",
+			"foreground",
+			"foreg",
+			"path",
+			"fore",
+			"sp1",
+			"oonclick",
+			"selectDot",
+			"color",
+			"colorscale",
+			"data",
+			";\n",
+			"identity",
+			"light",
+			"lights",
+			"light",
+			"voronoi_f2_3d",
+			"P",
+			"whoo",
+			"crackpattern",
+			"scanning",
+			"<<<<<",
+			"403",
+			"\\begin{figure",
+			"th",
+			"scanning",
+			"figure",
+			"sammh",
+			"samm",
+			"sammhällsetiska",
+			"arbetet i ett",
+			"tex_polygons",
+			"cam",
+			"getpo",
+			"get",
+			"getDevice",
+			"apply",
+			"applycamera",
+			"textureMeshwithMultipleCameras",
+			"poisson",
+			"showcame",
+			"cam.te",
+			"camera.tex",
+			"mCameras",
+			"mCamera",
+			"cam",
+			"\n  ",
+			"{\n",
+			"mCameras",
+			"re",
+			"rezi",
+			"rezise",
+			"mCameras",
+			"focal_length",
+			"applyCameraPose",
+			"readCamPoseFile",
+			"cam",
+			"\"cam\"",
+			"cam",
+			"my cames",
+			"apply",
+			"Texture::applyCameraPose",
+			"occ",
+			"writing mater",
+			"mCameras",
+			"my_cams",
+			"applyCameraPose",
+			"cloud",
+			"mesh.",
+			"show",
+			"showMesh",
+			"mesh",
+			"getNormals",
+			"Eigen::Affine3f",
+			"cloud_with_normals",
+			"mesh.cloud",
+			"mMan",
+			"mMana",
+			"kinec",
+			"show",
+			"showC",
+			"mManager",
+			"Kinec",
+			"kinect",
+			"applyCameraPose",
+			"applycamera",
+			"apply",
+			"calibrate",
+			"poisson",
+			"getNormals",
+			"runPoisson",
+			"removeN",
+			"reduceData",
+			"int hash",
+			"cons",
+			"callback",
+			"break",
+			"coun",
+			"webs",
+			"websocket",
+			"getHash",
+			"196",
+			"<<<<<<<",
+			"pcl::pol",
+			"Tex",
+			"fs",
+			"visu",
+			"PCL_",
+			"fs",
+			"main",
+			".h",
+			" smoothing",
+			"texture",
+			"poiss",
+			"mongo",
+			"setPosition",
+			"removeNoise",
+			"reduce",
+			"removeNoise",
+			"<<<",
+			"removeNoise",
+			"cali"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "underscore-min.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"kine",
+				"include/Kinect.h"
+			],
+			[
+				"kinect",
+				"src/KinectManager.cpp"
+			],
+			[
+				"main",
+				"src/main.cpp"
+			],
+			[
+				"cali",
+				"src/calibration.cpp"
+			],
+			[
+				"tex",
+				"src/texture.cpp"
+			],
+			[
+				"medusa",
+				"src/Medusa.cpp"
+			],
+			[
+				"render",
+				"include/renderMesh.h"
+			],
+			[
+				"kinectm",
+				"src/KinectManager.cpp"
+			],
+			[
+				"te",
+				"include/texture.h"
+			],
+			[
+				"rend",
+				"include/renderMesh.h"
+			],
+			[
+				"connec",
+				"src/connect.html"
+			],
+			[
+				"web",
+				"src/websocket.cpp"
+			],
+			[
+				"md5",
+				"src/MD5.cpp"
+			],
+			[
+				"md",
+				"src/MD5.cpp"
+			],
+			[
+				"",
+				"src/texture.cpp"
+			],
+			[
+				"kinec",
+				"src/KinectManager.cpp"
+			],
+			[
+				"texu",
+				"src/texture.cpp"
+			],
+			[
+				"kinecm",
+				"src/KinectManager.cpp"
+			],
+			[
+				"textu",
+				"src/texture.cpp"
+			],
+			[
+				"cmakeli",
+				"CMakeLists.txt"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 208.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
