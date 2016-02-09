@@ -4,7 +4,15 @@
     * @param k
     * @return {Object}
     */
-   
+
+	Object.size = function(obj) {
+	    var size = 0, key;
+	    for (key in obj) {
+	        if (obj.hasOwnProperty(key)) size++;
+	    }
+	    return size;
+	};
+
     function kmeans(data, k) {
         
         //init variables
@@ -14,9 +22,17 @@
 		var cycleTracker = [];
 		var kList = [];
 		var trackList = [];
-	
+		
 		//	Initial Step
 		//_________________________________________________________
+
+		//get dimenson of dataSet
+		
+		var dimension = Object.size(data[0]);
+		var key = Object.keys(data[0]);
+		
+		
+
 
 		//Get random line as initial k
 		for(var cou=0; cou<k; cou++) 
@@ -24,15 +40,23 @@
 			cycleTracker[cou] = [];
 			trackList[cou] = [];
 			var random =  data[ Math.floor(Math.random()* data.length)];
-			kList.push( [ parseFloat(random.A), parseFloat(random.B), parseFloat(random.C)] );
+			var values = []
+			var temp = 0;
+			Object.keys(random).forEach(function(d){
+				values[temp] = parseFloat(random[d]);	
+				temp++;
+			
+			})
 
+			kList[cou] = values;
+			console.log( "klist :  " +kList);
 		}
 	
-		console.log(kList);
+	
 		//store index to which the line i closest
 		var closestToIndex = {};
 		
-
+		
 		do
 		{
 			
@@ -40,17 +64,21 @@
 			//do for each line
 	        data.forEach(function(d){ 
 				
-				distance = {}; 
+				var distance = []; 
 				var smallestDistIndex = 0;
 				
 				//calculate distance to kCenter point
 				for(var i=0; i<k; i++){
-					distance[i] =  Math.sqrt( Math.pow(( kList[i][0] - d.A ) , 2) +
-														Math.pow(( kList[i][1]  - d.B ) , 2) +
-														Math.pow(( kList[i][2]  - d.C ) , 2) );
+					distance[i] = 0;
+					var temp = 0;
+					Object.keys(d).forEach(function(dim){
+						distance[i] +=  Math.sqrt( Math.pow(( kList[i][temp] - d[dim] ) , 2));										
+						temp++;
+					})
 					if(distance[i] < distance[smallestDistIndex])
 						smallestDistIndex = i;
 				}
+
 				
 				closestToIndex[count] = smallestDistIndex;
 				
@@ -66,16 +94,17 @@
 			//_________________________________________________________
 		
 			for(var i=0; i<k; i++) {
-				var sumDistA = 0;
-				var sumDistB = 0;
-				var sumDistC = 0;
+				var sumDist = [];
+				for(var n = 0; n < dimension; n++){sumDist[n] = 0;}
 				var numberOfElements = 0;
 				//calculate new K centroids for each cluster
 				trackList[i].forEach(function(d){
-					sumDistA += parseFloat(d.A);
+					var temp = 0;
+					Object.keys(d).forEach(function(dim){
+						sumDist[temp] += parseFloat(d[dim]);
+						temp++;
+					})
 
-					sumDistB += parseFloat(d.B);
-					sumDistC +=  parseFloat(d.C);
 					numberOfElements += 1;
 
 				})
@@ -83,12 +112,10 @@
 				//NaN failsafe
 				if(numberOfElements == 0){
 					numberOfElements=1;
-				
 				}
-
-				kList[i][0] = sumDistA/numberOfElements;
-				kList[i][1]= sumDistB/numberOfElements;
-				kList[i][2] = sumDistC/numberOfElements;
+				for(var n = 0; n < dimension; n ++){
+					kList[i][n] = sumDist[n]/numberOfElements;
+				}
 				
 			}
 
@@ -99,30 +126,31 @@
 			//check qualit of cluster using sum of square distances
 			
 			for(var i=0; i<k; i++) {
-				var sumOfSquareA = 0;
-				var sumOfSquareB = 0;
-				var sumOfSquareC = 0;
+				var sumOfSquare = [];
+				for(var n = 0; n < dimension; n++){sumOfSquare[n] = 0;}
 		
 				trackList[i].forEach(function(d){
-					sumOfSquareA += Math.pow( parseFloat(d.A) - kList[i][0] ,2)
-					sumOfSquareB += Math.pow( parseFloat(d.B) - kList[i][1] ,2)
-					sumOfSquareC += Math.pow( parseFloat(d.C) - kList[i][2] ,2)
+					var temp = 0;
+					Object.keys(d).forEach(function(dim){
+						sumOfSquare[temp] += Math.pow( parseFloat(d[dim]) - kList[i][temp] ,2)
+						temp++;
+					})
 				})
-
-				cycleTracker[i][cycle] = [sumOfSquareA,sumOfSquareB,sumOfSquareC];
-
+				
+				cycleTracker[i][cycle] = sumOfSquare;
 			}
 			
+
+
 			if(cycle != 0 )
 			{
-				var dist = {};
+				var dist = [];
 				for(var i=0; i<k; i++) {
-
-					dist[i]= Math.abs(cycleTracker[i][cycle-1][0] - cycleTracker[i][cycle][0])+
-							 (cycleTracker[i][cycle-1][1] - cycleTracker[i][cycle][1])+  
-							 (cycleTracker[i][cycle-1][2] - cycleTracker[i][cycle][2]);
-							 
+					for(var n=0; n<dimension; n++) {
+						dist[i] += Math.abs(cycleTracker[i][cycle-1][n] - cycleTracker[i][cycle][n]);		  
+					}				 
 				}
+				
 				
 				//Step 4 Validate distance?
 				//_______
@@ -145,13 +173,11 @@
 				
 			}
 			
-			cycle++;
-			
+			cycle++;	
 
 		}
 		while(breakCondition)
-		console.log(cycleTracker)
-
+		console.log(kList);
 
 		return closestToIndex;
 		
