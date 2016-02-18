@@ -33,7 +33,9 @@ function pc(){
 
     var color = d3.scale.category20();
 
+
     d3.csv("data/testData2_5600x5_x-clusters.csv", function(data) {
+
         // Extract the list of dimensions and create a scale for each.
         x.domain(dimensions = d3.keys(data[0]).filter(function(d) {
             return (y[d] = d3.scale.linear()
@@ -47,7 +49,7 @@ function pc(){
 
         self.data = data;
 
-        var k = 4;
+        var k = 3;
         var kmeansRes = kmeans(data,k);
 
 
