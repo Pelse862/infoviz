@@ -49,7 +49,7 @@
 			})
 
 			kList[cou] = values;
-			console.log( "klist :  " +kList);
+		
 		}
 	
 	
@@ -145,19 +145,23 @@
 			if(cycle != 0 )
 			{
 				var dist = [];
+				for(var n = 0; n < dimension; n++){dist[n] = 0;}
+				
 				for(var i=0; i<k; i++) {
 					for(var n=0; n<dimension; n++) {
 						dist[i] += Math.abs(cycleTracker[i][cycle-1][n] - cycleTracker[i][cycle][n]);		  
 					}				 
 				}
 				
-				
+
 				//Step 4 Validate distance?
 				//_______
 				var c = 0;
 			
 				for(var i=0; i<k; i++) {
 					if(isNaN(dist[i]) || dist[i] < 0)dist[i] = 0;
+					console.log(dist[i]);
+
 					if(dist[i] < 0.01){
 						c++;
 					}
@@ -177,7 +181,7 @@
 
 		}
 		while(breakCondition)
-		console.log(kList);
+		console.log(cycle);
 
 		return closestToIndex;
 		

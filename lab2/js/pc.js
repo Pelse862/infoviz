@@ -31,7 +31,7 @@ function pc(){
         .append("svg:g")
         .attr("transform", "translate(" + margin[3] + "," + margin[0] + ")");
 
-    var color = d3.scale.category10();
+    var color = d3.scale.category20();
 
     d3.csv("data/testData2_5600x5_x-clusters.csv", function(data) {
         // Extract the list of dimensions and create a scale for each.
