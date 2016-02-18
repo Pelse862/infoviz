@@ -56,9 +56,17 @@ function map(data) {
     //Formats the data in a feature collection
     function geoFormat(array) {
         var data = [];
+
         array.map(function (d, i) {
-            //Complete the code
+            data.push( {type: "Feature",
+            geometry: {type:"Point",
+                    coordinates: [parseFloat(d.lon), parseFloat(d.lat)]
+                },
+            other: {"mag": parseFloat(d.mag),"time": (d.time)}
+            } 
+            ) ; 
         });
+        
         return data;
     }
 
@@ -75,7 +83,23 @@ function map(data) {
                 .style("stroke", "white");
 
         //draw point        
-        var point //Complete the code
+        var point = g.selectAll("circle")
+            .data(geoData.features)
+            .enter().append("circle")
+         
+            //Define the x and y coordinate data values for the dots   
+            .attr("cx", function(d) {
+                //console.log(d.center.coordinates)
+                return projection( d.geometry.coordinates)[0]; //Load data
+            })
+            .attr("cy", function(d) {
+                //console.log(d.center.coordinates)
+                return projection( d.geometry.coordinates)[1]; //Load data
+            })
+            .attr("r", 1.5)
+            .style("fill", "orange")
+            
+       
     };
 
     //Filters data points according to the specified magnitude
