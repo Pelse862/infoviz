@@ -21,7 +21,8 @@ function map(data) {
     var filterdData = data;
 
     //Sets the colormap
-    var colors = colorbrewer.Set3[10];
+    //var colors = colorbrewer.Set3[10];
+    var color = d3.scale.category20();
 
     //Assings the svg canvas to the map div
     var svg = d3.select("#map").append("svg")
@@ -96,7 +97,7 @@ function map(data) {
                 //console.log(d.center.coordinates)
                 return projection( d.geometry.coordinates)[1]; //Load data
             })
-            .attr("r", 1.5)
+            .attr("r", 2.0)
             .style("fill", "orange")
             
        
@@ -104,17 +105,56 @@ function map(data) {
 
     //Filters data points according to the specified magnitude
     function filterMag(value) {
-        //Complete the code
+    
+        d3.selectAll("circle")
+        .style("opacity", function(d) {
+            if((d.other.mag)< value)
+                return 0.0;  
+            else 
+                return 1.0;
+        });
     }
     
     //Filters data points according to the specified time window
     this.filterTime = function (value) {
-        //Complete the code
+        var startTime = value[0].getTime();
+        var endTime = value[1].getTime();
+        
+        d3.selectAll("circle")
+        .style("opacity", function(d){
+           var date = new Date(d.other.time);
+        var thisTime = date.getTime();
+
+        if(thisTime < endTime && thisTime > startTime)
+                return 1.0;
+        else
+            return 0.0;
+
+        });
+
     };
 
     //Calls k-means function and changes the color of the points  
     this.cluster = function () {
-        //Complete the code
+        var k  = document.getElementById("k").value;
+        console.log(geoData)
+        var localData = [];
+        var temp = 0;
+        
+        geoData.features.forEach(function(d){
+            var latit = (d.geometry.coordinates)[0];
+            var longi = (d.geometry.coordinates)[1];
+            localData[temp] = [longi,latit];
+            temp++;
+        })
+
+        var kmeansRes = kmeans(localData,k);
+        g.selectAll("circle")
+        .data(geoData.features)
+        .style("fill",function(d,i){
+
+            return color(kmeansRes[i])})
+
     };
 
     //Zoom and panning method
